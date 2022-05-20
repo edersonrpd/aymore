@@ -3,7 +3,7 @@ import os
 arquivos = os.listdir()
 cotacoes = []
 
-excecao = ['aymore.py', '.gitignore', '.git', 'resultados.txt', 'novo']
+excecao = ['aymore.py', '.gitignore', '.git', 'resultados.txt', 'aymore.bat']
 
 try:
     for exc in excecao:
@@ -46,6 +46,11 @@ def aymore(file: str):
                 pedido = int(linha[32:38])
                 pedido_consulta = int(linha[38:40])
 
+                if pedido_consulta == 0:
+                    pedido_consulta = 'Pedido'
+                else:
+                    pedido_consulta = 'Consulta'
+
             if linha[4:6] == '02':
                 posicao = linha[0:4]
                 produto = int(linha[6:20])
@@ -59,11 +64,11 @@ def aymore(file: str):
     print('-' * 50)
     print(f'Data: {dia}/{mes}/{ano} Hora: {hora}:{minuto}')
     print(f'Cliente: {cod_cli}')
-    print(f'Pedido consulta: {pedido_consulta}')
-    print('-' * 32)
+    print(f'Pedido/Consulta: {pedido_consulta}')
+    print('-' * 50)
     for produto, qtde in zip(produtos, qtde_produto):
         print(f'ID: {produto} Qtd: {qtde}')
-    print('-' * 32)
+    
     return ''
 
 
