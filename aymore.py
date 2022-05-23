@@ -1,20 +1,11 @@
 import os
 
-arquivos = os.listdir()
-cotacoes = []
+diretorio = os.listdir()
+arquivos = list()
 
-excecao = ['aymore.py', '.gitignore', '.git', 'resultados.txt', 'aymore.bat']
-
-try:
-    for exc in excecao:
-
-        if exc in excecao:
-            arquivos.remove(exc)
-        else:
-            None
-
-except exc as error:
-    print(f'Deu ruim {error}')
+for arquivo in diretorio:
+    if arquivo.startswith('MILF'):
+        arquivos.append(arquivo)
 
 
 def aymore(file: str):
@@ -68,12 +59,15 @@ def aymore(file: str):
     print('-' * 50)
     for produto, qtde in zip(produtos, qtde_produto):
         print(f'ID: {produto} Qtd: {qtde}')
-    
+
     return ''
 
 
 for arquivo in arquivos:
-    print(aymore(arquivo))
+    aymore(arquivo)
 
-
-print(f'{len(arquivos)} arquivos')
+print('-' * 50)
+if len(arquivos) == 1:
+    print(f'{len(arquivos)} arquivo.')
+else:
+    print(f'{len(arquivos)} arquivos.')
