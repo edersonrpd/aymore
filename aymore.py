@@ -9,19 +9,9 @@ for arquivo in diretorio:
 
 
 def aymore(file: str):
-    horario = ''
-    data = ''
-    dia = ''
-    mes = ''
-    ano = ''
-    hora = ''
-    minuto = ''
+
     produtos = []
-    pedido = ''
-    qtde = ''
     qtde_produto = []
-    cod_cli = ''
-    pedido_consulta = ''
     with open(file, mode='r', encoding='utf-8') as fp:
         linha = fp.readline()
         while linha:
@@ -36,11 +26,12 @@ def aymore(file: str):
                 minuto = horario[2:4]
                 pedido = int(linha[32:38])
                 pedido_consulta = int(linha[38:40])
-
                 if pedido_consulta == 0:
                     pedido_consulta = 'Pedido'
                 else:
                     pedido_consulta = 'Consulta'
+
+                forma_pagamento = linha[39:44]
 
             if linha[4:6] == '02':
                 posicao = linha[0:4]
@@ -56,6 +47,7 @@ def aymore(file: str):
     print(f'Data: {dia}/{mes}/{ano} Hora: {hora}:{minuto}')
     print(f'Cliente: {cod_cli}')
     print(f'Pedido/Consulta: {pedido_consulta}')
+    print(f'Forma de Pagamento: {forma_pagamento}')
     print('-' * 50)
     for produto, qtde in zip(produtos, qtde_produto):
         print(f'ID: {produto} Qtd: {qtde}')
